@@ -8,5 +8,4 @@ This is a simple REST API built with CodeIgniter 3, using PostgreSQL as the data
 ## Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.comwitness376
-student-management-api.git
+   git clone https://github.com/witness376/student-management-api.git
