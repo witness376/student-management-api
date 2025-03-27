@@ -1,6 +1,4 @@
 # student-management-api
-# Software Engineering API
-
 This is a simple REST API built with CodeIgniter 3, using PostgreSQL as the database.
 
 ## Endpoints
