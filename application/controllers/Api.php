@@ -42,7 +42,7 @@ class Api extends CI_Controller {
 		 
 		 public function subjects() {
 			 
-			 $subjects = $this->Subject_model->get_software_engineering_subjects();
+			 $subjects = $this->Subject_model->get_all_subjects();
 	 
 	
 			 $this->output

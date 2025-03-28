@@ -9,7 +9,7 @@ class Subject_model extends CI_Model {
     }
 
    
-    public function get_software_engineering_subjects() {
+    public function get_all_subjects() {
         $this->db->select('course_name, academic_year');
         $this->db->from('subjects');
         $query = $this->db->get();
@@ -18,4 +18,4 @@ class Subject_model extends CI_Model {
 
     
     }
-}
+
