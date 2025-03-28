@@ -27,6 +27,7 @@ class Api extends CI_Controller {
 			 
 			 $this->load->model('Student_model');
 			 $this->load->model('Subject_model');
+			 $this->load->library('output');
 		 }
 	 
 		 
