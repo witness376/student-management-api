@@ -53,4 +53,6 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['api/students'] = 'api/students'; 
-$route['api/subjects'] = 'api/subjects';  
+$route['api/subjects'] = 'api/subjects'; 
+$route['api-links'] = 'api/api_links';
+

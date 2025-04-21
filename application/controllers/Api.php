@@ -25,29 +25,31 @@ class Api extends CI_Controller {
 		 public function __construct() {
 			 parent::__construct();
 			 
-			 $this->load->model('Student_model');
-			 $this->load->model('Subject_model');
+			 $this->load->model('student_model');
+			 $this->load->model('subject_model');
+			
 		 }
 	 
 		 
 		 public function students() {
 			
-			 $students = $this->Student_model->get_all_students();
+			 $students = $this->student_model->get_all_students();
+			 header('Content-Type: application/json');
 	 
-			 $this->output
-				 ->set_content_type('application/json')
-				 ->set_output(json_encode($students));
+			 echo json_encode($students);
 		 }
 	 
 		 
 		 public function subjects() {
 			 
-			 $subjects = $this->Subject_model->get_all_subjects();
+			 $subjects = $this->subject_model->get_all_subjects();
+			 header('Content-Type: application/json');
 	 
 	
-			 $this->output
-				 ->set_content_type('application/json')
-				 ->set_output(json_encode($subjects));
+			echo json_encode($subjects);
 		 }
-	 }
 	 
+	 public function api_links() {
+		$this->load->view('api_links');
+	}
+}
