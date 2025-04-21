@@ -25,15 +25,10 @@ class Api extends CI_Controller {
 		 public function __construct() {
 			 parent::__construct();
 			 
-<<<<<<< HEAD
+
 			 $this->load->model('student_model');
 			 $this->load->model('subject_model');
 			
-=======
-			 $this->load->model('Student_model');
-			 $this->load->model('Subject_model');
-			 $this->load->library('output');
->>>>>>> 07a4b0911ae8dabef5d3ddd284f990457a046ed4
 		 }
 	 
 		 
