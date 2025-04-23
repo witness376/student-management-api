@@ -1,145 +1,145 @@
-🎓 Student Management API
+Here's a comprehensive **README.md** template for your student-management-api project. You can customize it according to your specific needs:
 
-## 📖 Overview
+```markdown
+# Student Management API
 
-The **Student Management System** is a web-based application built using **CodeIgniter 3** and **MySQL**. It provides two RESTful API endpoints:
+A CodeIgniter-based REST API for managing student records and subjects.
 
-- `/api/students` – Returns a JSON response with at least 10 students, each with a name and enrolled program.
-- `/api/subjects` – Returns a JSON response listing all subjects in the Software Engineering program, categorized by academic year (Year 1 to Year 4).
+## Features
 
----
+- Student CRUD operations
+- Subject management
+- PostgreSQL database integration
+- RESTful endpoints
 
-## ✨ Features
+## Prerequisites
 
-- ✅ View a list of students and their enrolled programs
-- ✅ View subjects categorized by academic year for the Software Engineering program
-- ✅ Lightweight and fast, powered by CodeIgniter 3
+- PHP 7.4+
+- PostgreSQL 12+
+- Apache/Nginx
+- Composer (for dependencies)
 
----
+## Installation
 
-## 🧪 Technologies Used
-
-- **Backend:** PHP (CodeIgniter 3)
-- **Database:** MySQL
-- **Deployment:** AWS EC2 (Ubuntu Server)
-- **Version Control:** Git + GitHub
-- **Web Server:** Apache2
-
----
-
-## 🛠 Installation & Setup
-
-### ⚙️ Prerequisites
-
-- PHP >= 7.4
-- MySQL
-- Apache2
-- Git
-
----
-
-### 🔽 Step 1: Clone the Repository
-
+1. Clone the repository:
 ```bash
-$ git clone https://github.com/witness376/student-management-api.git
-$ cd student-management-api
-💾 Step 2: Configure Database
-Create a new MySQL database named student_db (or your preferred name), and update your database credentials in:
+git clone https://github.com/witness376/student-management-api.git
+cd student-management-api
+```
 
-application/config/database.php:
+2. Install dependencies:
+```bash
+composer install
+```
 
-php
-Copy
-Edit
-'hostname' => 'localhost',
-'username' => 'root',
-'password' => '',
-'database' => 'student_db',
-'dbdriver' => 'mysqli',
-Then import the provided SQL file or manually insert student and subject data.
+3. Database setup:
+```bash
+sudo -u postgres psql -c "CREATE DATABASE sma;"
+sudo -u postgres psql -d sma -f database/schema.sql
+```
 
-🔧 Step 3: Configure Base URL
-Open application/config/config.php and update:
+4. Configure environment:
+```bash
+cp env.example .env
+nano .env
+```
 
-php
-Copy
-Edit
-$config['base_url'] = 'http://your-server-ip/student-management-api/';
-🚀 Step 4: Start Apache Server
-Ensure Apache is running:
+## Configuration
 
-bash
-Copy
-Edit
-$ sudo service apache2 start
-Then visit:
+Update these in `.env`:
+```ini
+DB_HOST=localhost
+DB_NAME=sma
+DB_USERNAME=postgres
+DB_PASSWORD=your_password
+```
 
-arduino
-Copy
-Edit
-http://your-server-ip/student-management-api/api/students
-http://your-server-ip/student-management-api/api/subjects
-🌐 Deployment on AWS
-🔒 Security Group Configuration
-Allow traffic on:
+## API Endpoints
 
-Port 22 – SSH access
+### Students
+- `GET /api/students` - List all students
+- `POST /api/students` - Create new student
+- `GET /api/students/{id}` - Get student details
+- `PUT /api/students/{id}` - Update student
+- `DELETE /api/students/{id}` - Delete student
 
-Port 80 – HTTP for Apache
+### Subjects
+- `GET /api/subjects` - List all subjects
+- `POST /api/subjects` - Create new subject
 
-📦 Production Setup
-Clone the project on your AWS EC2 instance.
+## Deployment
 
-Place the project under /var/www/html/.
+1. Apache configuration:
+```apache
+<VirtualHost *:80>
+    DocumentRoot /var/www/html/student-management-api
+    <Directory /var/www/html/student-management-api>
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+```
 
-Ensure Apache and MySQL are running.
+2. Enable mod_rewrite:
+```bash
+sudo a2enmod rewrite
+sudo systemctl restart apache2
+```
 
-Access it via your public IP address.
+## Development
 
-🧪 API Endpoints
-/api/students
-Returns a list of students and their enrolled programs.
+1. Code style:
+```bash
+composer run cs-fix
+```
 
-json
-Copy
-Edit
-[
-  {
-    "name": "Alice Johnson",
-    "program": "BSc in Software Engineering"
-  },
-  ...
-]
-/api/subjects
-Returns subjects grouped by academic year.
+2. Testing:
+```bash
+composer test
+```
 
-json
-Copy
-Edit
-{
-  "year_1": ["Intro to Programming", "Mathematics I"],
-  "year_2": ["Data Structures", "Databases"],
-  "year_3": ["Software Engineering", "Web Dev"],
-  "year_4": ["Capstone Project", "Cloud Computing"]
-}
-🤝 Contribution
-Contributions are welcome! Feel free to fork the repository and submit a pull request.
+## Environment Variables
 
-📄 License
-This project is licensed under the MIT License.
+| Variable | Description |
+|----------|-------------|
+| DB_HOST | Database host |
+| DB_NAME | Database name |
+| DB_USERNAME | Database user |
+| DB_PASSWORD | Database password |
+| APP_ENV | Application environment |
 
-👨‍💻 Developed By
-Witness Masamaki
+## Contributing
 
-Email: masamakiwitness@gmail.com
-Course: CS 421 – Application Deployment and Management
-Instructor: Dr. Goodiel C. Moshi
-Institution: The University of Dodoma
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-yaml
-Copy
-Edit
+## License
 
----
+Distributed under the MIT License. See `LICENSE` for more information.
 
-Let me know if you want me to generate a `requirements.txt` equivalent (maybe listing PHP extensio
+## Contact
+
+Witness - [@your_twitter](https://twitter.com/your_handle) - masamakiwitness@gmail.com
+
+Project Link: [https://github.com/witness376/student-management-api](https://github.com/witness376/student-management-api)
+```
+
+### Key Sections to Customize:
+1. **Features** - Add any unique features of your API
+2. **Endpoints** - Include all your actual API routes
+3. **Database** - Update with your actual schema commands
+4. **Contact** - Add your real contact information
+
+### Formatting Tips:
+- Use backticks (`) for code/commands
+- Keep headings consistent (## for main sections, ### for subsections)
+- Use tables for environment variables or configuration options
+- Include badges at the top if desired (e.g., for version, license, build status)
+
+Would you like me to:
+1. Add specific installation instructions for your PostgreSQL setup?
+2. Include sample API request/response examples?
+3. Add a troubleshooting section with common issues?
