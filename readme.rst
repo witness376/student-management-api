@@ -98,6 +98,31 @@ Allow traffic on the following ports:
 
 This project is open-source and available under the [MIT License](LICENSE).
 
+#Backup Strategies
+Full Backup
+
+How it works: Copies all data every time a backup is made.
+
+Advantages: Easy to restore.
+
+Disadvantages: Takes the most time and storage.
+
+Incremental Backup
+
+How it works: Backs up only the data changed since the last backup.
+
+Advantages: Saves time and space.
+
+Disadvantages: Restoring takes more steps (requires last full + all incremental backups).
+
+Differential Backup
+
+How it works: Backs up changes since the last full backup.
+
+Advantages: Faster restore than incremental.
+
+Disadvantages: Larger than incremental but smaller than full.
+
 ## Author
 
 Developed by **Witness JulRich** during Industrial Practical Training at **MAYOCOO Company**, Moshi, Tanzania.
@@ -105,4 +130,3 @@ Developed by **Witness JulRich** during Industrial Practical Training at **MAYOC
 
 ---
 
-Let me know if you'd like to tailor this more specifically to your project name, GitHub repo, or any extra features!
