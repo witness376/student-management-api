@@ -2,8 +2,8 @@
 
 ## Overview
 The Student Management System is a web-based application developed using **CodeIgniter 3** and **PostgreSQL**. The application provides API endpoints:
-- **/students** – returns a JSON response containing a minimum of 10 students with each student's name and enrolled program clearly listed.
-- **/subjects** – returns a JSON response listing all subjects associated with the Software Engineering program from Year 1 through 4.
+- **api/students** – returns a JSON response containing a minimum of 10 students with each student's name and enrolled program clearly listed.
+- **api/subjects** – returns a JSON response listing all subjects associated with the Software Engineering program from Year 1 through 4.
 
 ## Features
 - API endpoint to view all students.
