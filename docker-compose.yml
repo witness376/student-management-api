@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 6438
+      POSTGRES_DB: student_record_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
