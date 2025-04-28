@@ -158,7 +158,7 @@ Copy code
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
-# Backup Strategies
+### Backup Strategies
 
 ## Full Backup
 **How it works:**  
