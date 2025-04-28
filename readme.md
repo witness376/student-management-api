@@ -158,9 +158,9 @@ Copy code
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
-### Backup Strategies
+## Backup Strategies
 
-## Full Backup
+### Full Backup
 **How it works:**  
 > Copies **all data** every time a backup is made.
 
@@ -172,7 +172,7 @@ Copy code
 
 ---
 
-## Incremental Backup
+### Incremental Backup
 **How it works:**  
 > Backs up **only the data changed** since the **last backup** (whether full or incremental).
 
@@ -184,7 +184,7 @@ Copy code
 
 ---
 
-## Differential Backup
+### Differential Backup
 **How it works:**  
 > Backs up **all changes** made since the **last full backup**.
 
@@ -195,6 +195,7 @@ Copy code
   Requires **more storage** than incremental, but less than full backups.
 
 ---
+
 Developed by Witness
 
 License
