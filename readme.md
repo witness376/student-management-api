@@ -158,27 +158,44 @@ Copy code
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
-Backup Strategies
-Full Backup
-How it works: Copies all data every time a backup is made.
+# Backup Strategies
 
-✅ Advantages: Easy and straightforward to restore.
-❌ Disadvantages: Requires the most time and largest storage capacity.
+## Full Backup
+**How it works:**  
+> Copies **all data** every time a backup is made.
 
-Incremental Backup
-How it works: Backs up only the data changed since the last backup (whether full or incremental).
+- ✅ Advantages:  
+  Easy and straightforward to restore.
 
-✅ Advantages: Efficient in terms of time and storage.
-❌ Disadvantages: Restoring is complex—you need the last full backup and all incremental backups made since.
+- ❌ Disadvantages:  
+  Requires the **most time** and **largest storage** capacity.
 
-Differential Backup
-How it works: Backs up all changes made since the last full backup.
+---
 
-✅ Advantages: Faster restore process compared to incremental backups.
-❌ Disadvantages: Requires more storage than incremental, but less than full backups.
+## Incremental Backup
+**How it works:**  
+> Backs up **only the data changed** since the **last backup** (whether full or incremental).
 
-Contribution
-Contributions are welcome! Feel free to submit a pull request.
+- ✅ **Advantages:**  
+  Efficient in terms of **time** and **storage**.
+
+- ❌ **Disadvantages:**  
+  Restoring is **complex**—you need the last full backup and **all incremental backups** made since.
+
+---
+
+## Differential Backup
+**How it works:**  
+> Backs up **all changes** made since the **last full backup**.
+
+- ✅ **Advantages:**  
+  **Faster restore** process compared to incremental backups.
+
+- ❌ **Disadvantages:**  
+  Requires **more storage** than incremental, but less than full backups.
+
+---
+Developed by Witness
 
 License
 This project is licensed under the MIT License.
