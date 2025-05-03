@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: student_api
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_NAME=student_record_db
+      - DB_USER=postgres
+      - DB_PASS=6838
+    networks:
+      - student-net
+
+  db:
+    image: postgres:13
+    container_name: student_db
+    restart: always
+    environment:
+      POSTGRES_DB: student_record_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 6438
+    volumes:
+      - postgres-data:/var/libpostgresql/data
+    networks:
+      - student-net
+
+volumes:
+  postgres-data:
+
+networks:
+  student-net:
