@@ -1,0 +1,3 @@
+CONTAINER ID   IMAGE                        COMMAND                  CREATED          STATUS          PORTS                               NAMES
+5dbef6f7cfd9   student-management-api-web   "docker-php-entrypoi…"   21 minutes ago   Up 21 minutes   0.0.0.0:80->80/tcp, :::80->80/tcp   student_api
+7c6aaadda316   postgres:13                  "docker-entrypoint.s…"   21 minutes ago   Up 21 minutes   5432/tcp                            student_db

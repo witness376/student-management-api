@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'   => '',
-    'hostname' => 'db', // <- this must match the service name in docker-compose
+    'hostname' => 'localhost', // <- this must match the service name in docker-compose
     'username' => 'postgres',
     'password' => '6438',
-    'database' => 'student_record_db',
+    'database' =>'sma',
     'dbdriver' => 'postgre', // (not postgresql)
     'dbprefix' => '',
     'pconnect' => FALSE,
