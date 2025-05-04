@@ -166,7 +166,6 @@ docker-compose up -d
 ---
 
 **Author**: Witness
-**Date**: April 2025
 
 ---
 
