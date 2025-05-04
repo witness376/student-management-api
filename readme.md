@@ -1,7 +1,3 @@
-Thanks, Witness. Since you're using **CodeIgniter 3**, not Node.js, your `README` or project overview should reflect only the relevant technologies (i.e., **PHP**, **CodeIgniter 3**, and **PostgreSQL**) and **remove any misleading references to Node.js** if they exist.
-
-From what you've posted, everything looks correct for a CodeIgniter 3 + PostgreSQL setup. However, here's a refined and **cleaned-up version** of your documentation for clarity and consistency:
-
 ---
 
 ## Student Management System
@@ -12,21 +8,21 @@ The Student Management System is a web-based application developed using **CodeI
 
 ---
 
-### 📌 API Endpoints
+### API Endpoints
 
 * `api/students` – Returns a JSON list of **at least 10 students** with their names and enrolled programs.
 * `api/subjects` – Returns a JSON list of **all subjects** under the Software Engineering program from **Year 1 to Year 4**.
 
 ---
 
-### 🎯 Features
+### Features
 
 * View all students.
 * View subjects for the Software Engineering program.
 
 ---
 
-### 🛠️ Technologies Used
+### Technologies Used
 
 * **Backend**: PHP (CodeIgniter 3)
 * **Database**: PostgreSQL
@@ -36,7 +32,7 @@ The Student Management System is a web-based application developed using **CodeI
 
 ---
 
-### 🧱 Installation & Setup
+### Installation & Setup
 
 #### Prerequisites
 
@@ -63,8 +59,8 @@ Edit `application/config/database.php`:
 $db['default'] = array(
     'hostname' => 'localhost', // or 'db' if using Docker
     'username' => 'postgres',
-    'password' => 'Test@123',
-    'database' => 'sma',
+    'password' => '6438',
+    'database' => 'student_record_db',
     'dbdriver' => 'postgre',
     'char_set' => 'utf8',
     'dbcollat' => 'utf8_general_ci',
@@ -78,10 +74,10 @@ $db['default'] = array(
 Use Apache or PHP built-in server:
 
 ```bash
-php -S localhost:8080 -t public
+php -S localhost -t public
 ```
 
-Access it via [http://localhost:8080](http://localhost:8080)
+Access it via [http://localhost](http://localhost)
 
 ---
 
@@ -90,36 +86,44 @@ Access it via [http://localhost:8080](http://localhost:8080)
 **docker-compose.yml**
 
 ```yaml
-version: '3.7'
+version: '3.8'
 
 services:
   web:
-    image: php:8.1-apache
-    container_name: student_management_web
-    volumes:
-      - ./public:/var/www/html
+    build: .
+    container_name: student_api
     ports:
-      - "8080:80"
+      - "80:80"
+    volumes:
+      - .:/var/www/html
     depends_on:
       - db
     environment:
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_DATABASE: sma
-      DB_USERNAME: postgres
-      DB_PASSWORD: Test@123
+      - DB_HOST=db
+      - DB_NAME=student_record_db
+      - DB_USER=postgres
+      - DB_PASS=6838
+    networks:
+      - student-net
 
   db:
-    image: postgres:latest
-    container_name: student_management_db
+    image: postgres:13
+    container_name: student_db
+    restart: always
     environment:
+      POSTGRES_DB: student_record_db
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Test@123
-      POSTGRES_DB: sma
+      POSTGRES_PASSWORD: 6438
     volumes:
-      - ./data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+      - postgres-data:/var/libpostgresql/data
+    networks:
+      - student-net
+
+volumes:
+  postgres-data:
+
+networks:
+  student-net:
 ```
 
 To start:
@@ -163,13 +167,8 @@ docker-compose up -d
 
 ---
 
-### 📄 License
-
-MIT License
-
 **Author**: Witness
 **Date**: April 2025
 
 ---
 
-Would you like this refined version saved as a new `README.md` file or formatted into your GitHub repo?
