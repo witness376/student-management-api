@@ -1,5 +1,3 @@
----
-
 ## Student Management System
 
 ### Overview
