@@ -1,97 +1,95 @@
-# Student Management System
+Thanks, Witness. Since you're using **CodeIgniter 3**, not Node.js, your `README` or project overview should reflect only the relevant technologies (i.e., **PHP**, **CodeIgniter 3**, and **PostgreSQL**) and **remove any misleading references to Node.js** if they exist.
 
-## Overview
+From what you've posted, everything looks correct for a CodeIgniter 3 + PostgreSQL setup. However, here's a refined and **cleaned-up version** of your documentation for clarity and consistency:
 
-The **Student Management System** is a web-based application developed using **CodeIgniter 3** and **PostgreSQL**. This application provides API endpoints to manage and view student data, including their enrolled program and associated subjects. The system is designed for ease of use and can be deployed on an Ubuntu server, with Docker support for easier containerized deployment.
+---
 
-### API Endpoints:
-- **api/students** – Returns a JSON response containing a minimum of 10 students with each student's name and enrolled program clearly listed.
-- **api/subjects** – Returns a JSON response listing all subjects associated with the Software Engineering program from Year 1 through 4.
+## Student Management System
 
-## Features
-- **API endpoint to view all students**.
-- **API endpoint to view subjects related to the Software Engineering program**.
+### Overview
 
-## Technologies Used
-- **Backend**: CodeIgniter 3 (PHP framework)
-- **Database**: PostgreSQL
-- **Authentication**: CodeIgniter’s built-in authentication
-- **Deployment**: Ubuntu Server on AWS, Docker (optional)
-- **Containerization**: Docker (optional for ease of deployment)
+The Student Management System is a web-based application developed using **CodeIgniter 3** and **PostgreSQL**. It provides API endpoints to manage student data, including enrolled programs and related subjects. The system is lightweight, container-ready (via Docker), and deployable on an Ubuntu server.
 
-## Installation & Setup
+---
 
-### Prerequisites
-Before setting up the project, ensure you have the following installed:
+### 📌 API Endpoints
 
-- PHP 8.1+
-- PostgreSQL
-- Composer
-- Git
-- Docker (optional for containerized setup)
+* `api/students` – Returns a JSON list of **at least 10 students** with their names and enrolled programs.
+* `api/subjects` – Returns a JSON list of **all subjects** under the Software Engineering program from **Year 1 to Year 4**.
 
-### Step 1: Clone the Repository
+---
+
+### 🎯 Features
+
+* View all students.
+* View subjects for the Software Engineering program.
+
+---
+
+### 🛠️ Technologies Used
+
+* **Backend**: PHP (CodeIgniter 3)
+* **Database**: PostgreSQL
+* **Authentication**: CodeIgniter’s built-in auth
+* **Deployment**: Ubuntu (optionally using Docker)
+* **Containerization**: Docker (optional)
+
+---
+
+### 🧱 Installation & Setup
+
+#### Prerequisites
+
+Ensure these are installed:
+
+* PHP 8.1+
+* PostgreSQL
+* Git
+* Composer *(optional for library management)*
+* Docker *(optional)*
+
+#### Step 1: Clone the Repository
+
 ```bash
 git clone https://github.com/witness376/student-management-api.git
-cd student-management
-Step 2: Install Dependencies
-CodeIgniter 3 doesn't use Composer for installation, but you may use it for managing libraries. For now, ensure that your CodeIgniter 3 project is ready with the necessary dependencies. You may need to manually set up your composer.json if required.
+cd student-management-api
+```
 
-Step 3: Environment Configuration
-Copy the .env.example file to .env (if you don't have .env, create one).
+#### Step 2: Database Configuration
 
-Configure your database settings:
+Edit `application/config/database.php`:
 
-In application/config/database.php:
-
-php
-Copy code
+```php
 $db['default'] = array(
-    'dsn'   => '',
-    'hostname' => 'localhost',  // Or use 'db' if you're using Docker
+    'hostname' => 'localhost', // or 'db' if using Docker
     'username' => 'postgres',
     'password' => 'Test@123',
     'database' => 'sma',
     'dbdriver' => 'postgre',
-    'dbprefix' => '',
-    'pconnect' => FALSE,
-    'db_debug' => (ENVIRONMENT !== 'production'),
-    'cache_on' => FALSE,
-    'cachedir' => '',
     'char_set' => 'utf8',
     'dbcollat' => 'utf8_general_ci',
-    'swap_pre' => '',
-    'autoinit' => TRUE,
-    'stricton' => FALSE,
-    'failover' => array(),
-    'save_queries' => TRUE
+    'pconnect' => FALSE,
+    'db_debug' => TRUE
 );
-For Docker deployment, use the following docker-compose.yml file to manage the PostgreSQL and PHP containers.
+```
 
-Step 4: Run Migrations (if using migrations)
-If your application requires migrations, you can run them with the following command:
+#### Step 3: Run the App
 
-bash
-Copy code
-php index.php migrate
-Note: In CodeIgniter 3, you may need to use an additional migration library to handle database migrations, as CodeIgniter does not natively support migrations in the same way as newer versions.
+Use Apache or PHP built-in server:
 
-Step 5: Serve the Application Locally
-To serve the application locally, simply run Apache or PHP's built-in server:
-
-bash
-Copy code
+```bash
 php -S localhost:8080 -t public
-Visit: http://localhost:8080/
+```
 
-Docker Setup (Optional)
-To run the application in Docker, follow these steps:
+Access it via [http://localhost:8080](http://localhost:8080)
 
-Step 1: Build Docker Containers
-Ensure you have a Dockerfile and docker-compose.yml file in your project root directory. Here's an example docker-compose.yml file for the project:
+---
 
-yaml
-Copy code
+### 🐳 Docker Setup (Optional)
+
+**docker-compose.yml**
+
+```yaml
 version: '3.7'
 
 services:
@@ -105,11 +103,11 @@ services:
     depends_on:
       - db
     environment:
-      - DB_HOST=db
-      - DB_PORT=5432
-      - DB_DATABASE=sma
-      - DB_USERNAME=postgres
-      - DB_PASSWORD=Test@123
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_DATABASE: sma
+      DB_USERNAME: postgres
+      DB_PASSWORD: Test@123
 
   db:
     image: postgres:latest
@@ -122,30 +120,26 @@ services:
       - ./data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-Step 2: Build and Start the Containers
-bash
-Copy code
+```
+
+To start:
+
+```bash
 docker-compose up -d
-Step 3: Access the Application
-After Docker containers are up and running, you can access the application at http://localhost:8080/.
+```
 
-Deployment on AWS
-Security Group Configuration
-Ensure the following ports are open in your AWS security group:
+---
 
-Port 22 (SSH)
+### 🚀 Deployment (AWS)
 
-Port 80/443 (HTTP/HTTPS for web access)
+**Security Group Settings**
 
-Running the App in Production
-Install Apache on your server.
+* Port 22 (SSH)
+* Port 80 / 443 (HTTP/HTTPS)
 
-Configure Apache to point to the public directory of your project.
+**Apache Virtual Host Example**
 
-Example Apache configuration:
-
-apache
-Copy code
+```apache
 <VirtualHost *:80>
     DocumentRoot /var/www/html/student-management-api/public
     ServerName your-aws-instance-ip
@@ -154,52 +148,28 @@ Copy code
         AllowOverride All
         Require all granted
     </Directory>
-
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
-## Backup Strategies
-
-### Full Backup
-**How it works:**  
-> Copies **all data** every time a backup is made.
-
-- ✅ Advantages:  
-  Easy and straightforward to restore.
-
-- ❌ Disadvantages:  
-  Requires the **most time** and **largest storage** capacity.
+```
 
 ---
 
-### Incremental Backup
-**How it works:**  
-> Backs up **only the data changed** since the **last backup** (whether full or incremental).
+### 💾 Backup Strategies
 
-- ✅ **Advantages:**  
-  Efficient in terms of **time** and **storage**.
-
-- ❌ **Disadvantages:**  
-  Restoring is **complex**—you need the last full backup and **all incremental backups** made since.
+| Type         | Description                                 | Pros                            | Cons                               |
+| ------------ | ------------------------------------------- | ------------------------------- | ---------------------------------- |
+| Full         | Backs up **everything** each time           | Easy to restore                 | Slowest, most storage needed       |
+| Incremental  | Backs up **changes since last backup**      | Fast & efficient                | Complex to restore                 |
+| Differential | Backs up **changes since last full backup** | Faster restore than incremental | Uses more storage than incremental |
 
 ---
 
-### Differential Backup
-**How it works:**  
-> Backs up **all changes** made since the **last full backup**.
+### 📄 License
 
-- ✅ **Advantages:**  
-  **Faster restore** process compared to incremental backups.
+MIT License
 
-- ❌ **Disadvantages:**  
-  Requires **more storage** than incremental, but less than full backups.
+**Author**: Witness
+**Date**: April 2025
 
 ---
 
-Developed by Witness
-
-License
-This project is licensed under the MIT License.
-
-Author: Witness
-Date: April 2025
+Would you like this refined version saved as a new `README.md` file or formatted into your GitHub repo?
